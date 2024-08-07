@@ -1,16 +1,7 @@
-import { Image, StyleSheet, Platform, View , Text } from 'react-native';
+import { Redirect } from 'expo-router';
 
-export default function HomeScreen() {
+export default function redirect() {
   return (
-    <View className="w-[700px] h-[300px] bg-red-500 z-20">
-      <Text className="text-red-500">Name</Text>
-    </View>
+    <Redirect href={"/Home/homepage"}></Redirect>
   );
 }
-
-const styles = StyleSheet.create({
-  name:{
-    color:"white",
-    fontSize:20,
-  }
-});
