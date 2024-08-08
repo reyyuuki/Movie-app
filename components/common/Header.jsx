@@ -20,7 +20,7 @@ const Header = () => {
         </View>
       </View>
       <View className="w-[50px] h-[50px] flex items-center justify-center rounded-full border border-zinc-500/50">
-        <FontAwesome6 name="bell" size={24} color="white" />
+        <FontAwesome6 name="bell" size={24} color="white"/>
       </View>
     </View>
   );
