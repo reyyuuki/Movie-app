@@ -26,11 +26,10 @@ export default function homepage() {
   }, []);
   if (!result) return <View></View>;
   return (
-    <ScrollView className='flex-grow'>
+    <View className='flex-grow'>
       <Header />
       <SearchStack/>
       {result.spotlightAnimes && <Corousale data={result.spotlightAnimes} />}
-      {result && <AnimeStack data={result}/>}
-    </ScrollView>
+    </View>
   );
 }
