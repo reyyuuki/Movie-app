@@ -12,7 +12,7 @@ const BigCard = ({ data }) => {
       />
       <Link
         href={{
-          pathname: `/Stream/[id]`,
+          pathname: `/Player/[id]`,
           params: { id: `${data.id}`, title: `${data.name}` },
         }}
         asChild

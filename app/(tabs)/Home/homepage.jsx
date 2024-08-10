@@ -26,8 +26,8 @@ export default function homepage() {
   }, []);
   if (!result) return <View></View>;
   return (
-    <View className='flex-grow'>
-      <Header />
+    <View className='flex-grow bg-white'>
+      <Header/>
       <SearchStack/>
       {result.spotlightAnimes && <Corousale data={result.spotlightAnimes} />}
     </View>

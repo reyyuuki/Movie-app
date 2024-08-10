@@ -1,14 +1,26 @@
-import { ScrollView, TouchableOpacity, View } from "react-native";
-import React from "react";
+import { Button, ScrollView, TouchableOpacity, View } from "react-native";
+import React, { useEffect } from "react";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { FontAwesome6 } from "@expo/vector-icons";
-import VideoPlayer from "react-native-video-player";
+import { ResizeMode, Video } from "expo-av";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 const Id = () => {
   const { id, title } = useLocalSearchParams();
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});
   const router = useRouter();
+
+  useEffect(() => {
+    ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    console.log("Component Mounted");
+
+    return () => {
+      ScreenOrientation.unlockAsync();
+    };
+  }, []);
   return (
-    <ScrollView className="flex-grow">
+    <View>
       <Stack.Screen
         options={{
           title: title.length > 20 ? title.substring(0, 17) + "..." : title,
@@ -18,22 +30,21 @@ const Id = () => {
             </TouchableOpacity>
           ),
           headerTitleAlign: "center",
-          headerStyle: { backgroundColor: "black" },
+          headerStyle: {backgroundColor: "black" },
         }}
       />
-      <View className="flex-1 justify-center items-center">
-        <VideoPlayer
-          video={{
+      <View className="w-full h-300px">
+        <Video
+          style={{ height: "100%", width: "100%" }}
+          source={{
             uri: "https://www084.vipanicdn.net/streamhls/027e9529af2b06fe7b4f47e507a787eb/ep.1.1703905435.1080.m3u8",
           }}
-          videoWidth={1200}
-          videoHeight={600}
+          useNativeControls={true}
+          shouldPlay={true}
           resizeMode="contain"
-          autoplay={false}
-          controls={true}
         />
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
